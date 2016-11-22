@@ -1,6 +1,6 @@
 # Dockerfiles
 
-Collection of Dockerfiles to create Swift 3 environment on Ubuntu 16.04
+Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04
 
 ## Instructions
 Execute command
