@@ -1,7 +1,6 @@
 # Dockerfiles
-<p align="center">
-  <img src="Dockerfiles.jpg"/>
-</p>
+
+![](Dockerfiles.jpg)
 
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
 ![Docker Version](https://img.shields.io/badge/Docker-1.12.3-6193DF.svg) 
