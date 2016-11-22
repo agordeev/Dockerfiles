@@ -2,8 +2,8 @@
 
 ![](Dockerfiles.jpg)
 
-![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
 ![Docker Version](https://img.shields.io/badge/Docker-1.12.3-6193DF.svg) 
+![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
 ![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg) 
 ![Vapor Version](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg) 
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
