@@ -1,7 +1,9 @@
 #!/bin/bash
 clear
-printf "Build 'clang' image\n" 
+printf "\033[38;5;12mBuild 'clang' image\033[0m\n" 
 docker build -t clang clang/
-printf "\nBuild 'swift3' image\n"
+printf "\n\033[38;5;12mBuild 'swift3' image\033[0m\n"
 docker build -t swift3 swift3/
-printf "\nFinished\n"
+printf "\n\033[38;5;12mBuild 'vapor' image\033[0m\n"
+docker build -t vapor vapor/
+printf "\n\033[38;5;12mFinished\033[0m\n\n"

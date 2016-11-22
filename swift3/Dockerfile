@@ -1,5 +1,10 @@
 FROM clang
 
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y libxml2 libcurl3 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 RUN ["/bin/bash", "-c","\
     export SWIFT=3.0.1 && \
     export UBUNTU=16.04 && \
