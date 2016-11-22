@@ -1,5 +1,12 @@
 # Dockerfiles
 
+![](Dockerfiles.jpg)
+
+![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
+![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg) 
+![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg) 
+![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
+
 Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04
 
 ## Instructions
