@@ -9,7 +9,7 @@
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 ![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg) 
 
-Collection of Dockerfile files to create Swift 3 environments on Ubuntu 16.04 for Vapor
+Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for Vapor
 
 ## Instructions
 Execute command
