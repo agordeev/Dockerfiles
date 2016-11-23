@@ -22,3 +22,8 @@ This script will build `clang`, `swift3` and `vapor` docker images
 - **`swift3` image**: `swift3` is base on `clang` image and install swift 3.0.1
 - **`vapor` image**: `vapor` is base on `swift3` image and install Vapor Toolbox v1.0.3 
 
+Work in progress:
+- **`vapor-mysql` image**: `vapor-mysql` is base on `vapor` image and install MySQL
+- **`vapor-postgresql` image**: `vapor-postgresql` is base on `vapor` image and install PostgreSQL
+- **`vapor-sqlite` image**: `vapor-sqlite/` is base on `vapor` image and install Sqlite 
+
