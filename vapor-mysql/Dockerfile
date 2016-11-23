@@ -18,9 +18,6 @@ RUN { \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
-RUN usermod -d /var/lib/mysql/ mysql
-RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
-
 COPY setup.sh /tmp/setup.sh
 COPY setup.sql /tmp/setup.sql
 RUN chmod u+x /tmp/setup.sh && \
