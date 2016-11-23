@@ -6,4 +6,10 @@ printf "\n\033[38;5;12mBuild 'swift3' image\033[0m\n"
 docker build -t swift3 swift3/
 printf "\n\033[38;5;12mBuild 'vapor' image\033[0m\n"
 docker build -t vapor vapor/
+printf "\n\033[38;5;12mBuild 'vapor-mysql' image\033[0m\n"
+docker build -t vapor-mysql vapor-mysql/
+printf "\n\033[38;5;12mBuild 'vapor-postgresql' image\033[0m\n"
+docker build -t vapor-postgresql vapor-postgresql/
+printf "\n\033[38;5;12mBuild 'vapor-sqlite' image\033[0m\n"
+docker build -t vapor-sqlite vapor-sqlite/
 printf "\n\033[38;5;12mFinished\033[0m\n\n"
