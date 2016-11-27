@@ -65,7 +65,7 @@ All images are built in the `Dockerfiles` folder
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
 
-If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` you must declare in the `File Sharing` like this:
+If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` you must declare this folder in the `File Sharing` like this:
 
 ![image](https://cloud.githubusercontent.com/assets/1082222/20648514/a84229a0-b4a9-11e6-9ef5-ed31d1fbab4c.png)
 
