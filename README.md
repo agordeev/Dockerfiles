@@ -94,7 +94,7 @@ No preparations.
 Server 'default' starting at 0.0.0.0:8080
 ```
 
-To test your project on your Mac on the browser with the url: `http://localhost:8080/`
+To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
 ![image](https://cloud.githubusercontent.com/assets/1082222/20648568/015f21ea-b4ab-11e6-982a-d354f2bf1f19.png)
 
 #### `vapor-mysql` image
