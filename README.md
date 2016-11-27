@@ -36,7 +36,7 @@ You just have to clone this repository:
 $ git clone https://github.com/TofPlay/Dockerfiles
 ```
 
-All images are build on `Dockerfiles` folder
+All images are built in the `Dockerfiles` folder
 
 -- 
 ### Basic Images
