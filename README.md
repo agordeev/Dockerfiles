@@ -71,7 +71,7 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 
 
-On your Mac open Terminal and enter the following command, you will map `/Volumes/Sources/vapor/projects` to `/vapor` on the container: 
+On your Mac open `Terminal` and enter the following command, you will map `/Volumes/Sources/vapor/projects` to `/vapor` on the container: 
 ```
 $ docker run -ti --name vapor --rm -p 127.0.0.1:8080:8080 -v /Volumes/Sources/vapor/projects:/vapor vapor
 ```
