@@ -51,7 +51,7 @@ All images are build on `Dockerfiles` folder
 
 * Image base on: `ubuntu:16:04 ➤ clang`
 * Instruction to build: `docker build -t swift3 swift3/`
-* Description: Install the Swift 3.0.1 environment on Linux. Can be used all Swift 3 applications on Linux.
+* Description: Install the Swift 3.0.1 environment on Linux. Can be used to build all Swift 3 applications on Linux.
 
 -- 
 ### Vapor Images
