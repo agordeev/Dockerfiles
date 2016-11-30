@@ -106,7 +106,7 @@ To test your project on your Mac open the browser and enter the url: `http://loc
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-mysql/projects` to `/vapor` on the container: 
 
 ```
-$ docker run -ti --name vapor-mysql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306  -v mysql.data:/var/lib/mysql -v /Volumes/Perso/Sources/Dockerfiles/vapor-mysql/projects:/vapor vapor-mysql
+$ docker run -ti --name vapor-mysql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306  -v mysql.data:/var/lib/mysql -v /Volumes/Sources/vapor-mysql/projects:/vapor vapor-mysql
  * Starting MySQL database server mysqld                                 [ OK ]
 root@3922aa89091f:/vapor#
 ```
