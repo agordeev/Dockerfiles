@@ -27,3 +27,6 @@ RUN chmod u+x /tmp/setup.sh && \
 EXPOSE 3306
 
 ENTRYPOINT service mysql start && bash
+
+# Launch the image with this command (replace '/Volumes/Sources' by your path)
+#  docker run -ti --name vapor-mysql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306 -v /Volumes/Sources/Dockerfiles/vapor-mysql/projects:/vapor vapor-mysql 

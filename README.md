@@ -6,11 +6,11 @@
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
 ![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg) 
 ![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg) 
-![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.1.12-orange.svg) 
+![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.1.13-orange.svg) 
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 ![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg) 
 
-Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04
+Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for developers
 
 ## Docker
 
@@ -38,29 +38,27 @@ $ git clone https://github.com/TofPlay/Dockerfiles
 
 All images are built in the `Dockerfiles` folder
 
--- 
-### Basic Images
+## Basic Images
 
-#### `clang` image
+### `clang` image
 
 * Image base on: `ubuntu:16:04`
 * Instruction to build: `docker build -t clang clang/`
 * Description: Create an image with the `clang` environment
 
-#### `swift3` image
+### `swift3` image
 
-* Image base on: `ubuntu:16:04 ➤ clang`
+* Image base on: `ubuntu:16:04 ► clang`
 * Instruction to build: `docker build -t swift3 swift3/`
 * Description: Install the Swift 3.0.1 environment on Linux. Can be used to build all Swift 3 applications on Linux.
 
--- 
-### Vapor Images
+## Vapor Images
 
 [Vapor](https://vapor.codes/) is web framework for Swift work on macOS and Ubuntu
 
-#### `vapor` image
+### `vapor` image
 
-* Image base on: `ubuntu:16:04 ➤ clang ➤ swift3`
+* Image base on: `ubuntu:16:04 ► clang ► swift3`
 * Instruction to build: `docker build -t vapor vapor/`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
@@ -97,20 +95,64 @@ Server 'default' starting at 0.0.0.0:8080
 To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
 ![image](https://cloud.githubusercontent.com/assets/1082222/20648568/015f21ea-b4ab-11e6-982a-d354f2bf1f19.png)
 
-#### `vapor-mysql` image
+--
+
+### `vapor-mysql` image
+
+* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Instruction to build: `docker build -t vapor-mysql vapor-mysql/`
+* Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
+
+On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-mysql/projects` to `/vapor` on the container: 
+
+```
+$ docker run -ti --name vapor-mysql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306  -v mysql.data:/var/lib/mysql -v /Volumes/Perso/Sources/Dockerfiles/vapor-mysql/projects:/vapor vapor-mysql
+ * Starting MySQL database server mysqld                                 [ OK ]
+root@3922aa89091f:/vapor#
+```
+
+On the container to build your project (replace `ItWorks-MySQL` by your project):
+
+```
+root@3922aa89091f:/vapor# cd ItWorks-MySQL/
+root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build
+Fetching Dependencies [Done]
+Building Project [Done]
+root@3922aa89091f:/vapor/ItWorks-MySQL#
+```
+
+To run your project on the container:
+
+```
+root@3922aa89091f:/vapor/ItWorks-MySQL# vapor run serve
+Running ItWorks-MySQL...
+No preparations.
+Server 'default' starting at 0.0.0.0:8080
+GET /version
+```
+
+To test your project on your Mac open the browser and enter the url: `http://localhost:8080/version`
+![image](https://cloud.githubusercontent.com/assets/1082222/20744679/a150a7a8-b6dd-11e6-9bc9-53a164c48520.png)
+
+If you run the following command you should see:
+
+```
+$ docker volume ls
+DRIVER              VOLUME NAME
+local               mysql.data
+```
+
+`mysql.data` is a data volume. All changes on `/var/lib/mysql` on the container will be persistent.
+
+### `vapor-postgresql` image
 
 Coming soon...
 
-#### `vapor-postgresql` image
+### `vapor-sqlite` image
 
 Coming soon...
 
-#### `vapor-sqlite` image
-
-Coming soon...
-
--- 
-### To build all images
+## To build all images
 
 Execute command
 
