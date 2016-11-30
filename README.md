@@ -2,13 +2,13 @@
 
 ![](Dockerfiles.jpg)
 
-![Docker Version](https://img.shields.io/badge/Docker-1.12.3-6193DF.svg) 
-![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
-![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg) 
-![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg) 
-![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.2-orange.svg) 
+[![Docker Version](https://img.shields.io/badge/Docker-1.12.3-6193DF.svg)](https://github.com/docker/docker)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
+[![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg)](https://swift.org/download/)
+[![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg)](https://github.com/vapor/toolbox)
+[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.2-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
-![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg) 
+[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
 Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for developers
 
