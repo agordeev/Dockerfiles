@@ -6,7 +6,7 @@
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)
 ![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg) 
 ![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg) 
-![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.1.13-orange.svg) 
+![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.2-orange.svg) 
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 ![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg) 
 
