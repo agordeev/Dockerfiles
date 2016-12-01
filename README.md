@@ -12,6 +12,25 @@
 
 Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for developers
 
+## Contents
+
+* [Docker](#docker)
+  * [What is Docker?](#what-is-a-dockerfile)
+  * What is a `Dockerfile`?
+  * Install Docker on Mac
+* [Docker Images](#docker-images)
+  * Install environment
+* [Basic Images](#basic-images)
+  * `clang` image
+  * `swift3` image
+* [Vapor Images](#vapor-images)
+  *`vapor` image  
+  * `vapor-mysql` image
+  * `vapor-postgresql` image
+  * `vapor-sqlite` image
+* [To build all images](#to-build-all-images)
+--
+
 ## Docker
 
 ### What is Docker?
@@ -56,18 +75,15 @@ All images are built in the `Dockerfiles` folder
 
 [Vapor](https://vapor.codes/) is web framework for Swift work on macOS and Ubuntu
 
+If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` you must declare this folder in the `File Sharing` like this:
+
+![image](https://cloud.githubusercontent.com/assets/1082222/20648514/a84229a0-b4a9-11e6-9ef5-ed31d1fbab4c.png)
+
 ### `vapor` image
 
 * Image base on: `ubuntu:16:04 ► clang ► swift3`
 * Instruction to build: `docker build -t vapor vapor/`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
-
-
-If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` you must declare this folder in the `File Sharing` like this:
-
-![image](https://cloud.githubusercontent.com/assets/1082222/20648514/a84229a0-b4a9-11e6-9ef5-ed31d1fbab4c.png)
-
-
 
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor/projects` to `/vapor` on the container: 
 ```
