@@ -16,18 +16,18 @@ Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for dev
 
 * [Docker](#docker)
   * [What is Docker?](#what-is-a-dockerfile)
-  * What is a `Dockerfile`?
-  * Install Docker on Mac
+  * [What is a `Dockerfile`?](#what-is-a-dockerfile)
+  * [Install Docker on Mac](#install-docker-on-mac)
 * [Docker Images](#docker-images)
-  * Install environment
+  * [Install environment](#install-environment)
 * [Basic Images](#basic-images)
-  * `clang` image
-  * `swift3` image
+  * [`clang` image](#clang-image)
+  * [`swift3` image](#swift3-image)
 * [Vapor Images](#vapor-images)
-  *`vapor` image  
-  * `vapor-mysql` image
-  * `vapor-postgresql` image
-  * `vapor-sqlite` image
+  * [`vapor` image](#vapor-image)
+  * [`vapor-mysql` image](#vapor-mysql-image)
+  * [`vapor-postgresql` image](#vapor-postgresql-image)
+  * [`vapor-sqlite` image](#vapor-sqlite-image)
 * [To build all images](#to-build-all-images)
 --
 
