@@ -170,7 +170,58 @@ local               mysql.data
 
 ### `vapor-postgresql` image
 
-Coming soon...
+* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Instruction to build: `docker build -t vapor-postgresql vapor-postgresql/`
+* Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
+
+On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-mysql/projects` to `/vapor` on the container: 
+
+```
+$ docker run -ti --rm \
+                 --name vapor-postgresql \
+                 -p 127.0.0.1:8080:8080 \
+                 -p 127.0.0.1:5432:5432 \
+                 -v postgresql.data:/var/lib/postgresql/9.5/main \
+                 -v /Volumes/Sources/vapor-postgresql/projects:/vapor \
+                 vapor-postgresql
+                 
+ * Starting PostgreSQL 9.5 database server                               [ OK ]
+root@99222e9cb4ac:/vapor#
+```
+
+On the container to build your project (replace `ItWorks-PostgreSQL` by your project):
+
+```
+root@99222e9cb4ac:/vapor# cd ItWorks-PostgreSQL/
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build
+Fetching Dependencies [Done]
+Building Project [Done]
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL#
+```
+
+To run your project on the container:
+
+```
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor run serve
+Running ItWorks-PostgreSQL...
+[DEPRECATED] Providers should implement the `boot(_: Droplet)` method to register dependencies. The `provided` property will be removed in a future update.
+No preparations.
+Server 'default' starting at 0.0.0.0:8080
+GET /version
+```
+
+To test your project on your Mac open the browser and enter the url: `http://localhost:8080/version`
+![image](https://cloud.githubusercontent.com/assets/1082222/20864528/8e662ea4-b9f5-11e6-9c57-c74cbe5504c2.png)
+
+If you run the following command you should see:
+
+```
+$ docker volume ls
+DRIVER              VOLUME NAME
+local               progresql.data
+```
+
+`progresql.data` is a data volume. All changes on `/var/lib/postgresql/9.5/main` on the container will be persistent.
 
 ### `vapor-sqlite` image
 
