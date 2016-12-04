@@ -140,6 +140,7 @@ On the container to build your project (replace `ItWorks-MySQL` by your project)
 ```
 root@3922aa89091f:/vapor# cd ItWorks-MySQL/
 root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build
+No Packages folder, fetch may take a while...
 Fetching Dependencies [Done]
 Building Project [Done]
 root@3922aa89091f:/vapor/ItWorks-MySQL#
@@ -156,7 +157,7 @@ GET /version
 ```
 
 To test your project on your Mac open the browser and enter the url: `http://localhost:8080/version`
-![image](https://cloud.githubusercontent.com/assets/1082222/20744679/a150a7a8-b6dd-11e6-9bc9-53a164c48520.png)
+![image](https://cloud.githubusercontent.com/assets/1082222/20866147/9a95baac-ba25-11e6-9f4e-5a5732d80f9b.png)
 
 If you run the following command you should see:
 
@@ -194,6 +195,7 @@ On the container to build your project (replace `ItWorks-PostgreSQL` by your pro
 ```
 root@99222e9cb4ac:/vapor# cd ItWorks-PostgreSQL/
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build
+No Packages folder, fetch may take a while...
 Fetching Dependencies [Done]
 Building Project [Done]
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL#
@@ -225,7 +227,44 @@ local               progresql.data
 
 ### `vapor-sqlite` image
 
-Coming soon...
+* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Instruction to build: `docker build -t vapor-sqlite vapor-sqlite/`
+* Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
+
+On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-sqlite/projects` to `/vapor` on the container: 
+
+```
+$ docker run -ti --rm \
+                 --name vapor-sqlite \
+                 -p 127.0.0.1:8080:8080 \
+                 -v /Volumes/Sources/vapor-sqlite/projects:/vapor \
+                 vapor-sqlite
+root@c05cd630ea61:/vapor#
+```
+
+On the container to build your project (replace `ItWorks-Sqlite ` by your project):
+
+```
+root@c05cd630ea61:/vapor# cd ItWorks-Sqlite/
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor build
+No Packages folder, fetch may take a while...
+Fetching Dependencies [Done]
+Building Project [Done]
+root@c05cd630ea61:/vapor/ItWorks-Sqlite#
+```
+
+To run your project on the container:
+
+```
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor run serve
+Running ItWorks-Sqlite...
+No preparations.
+Server 'default' starting at 0.0.0.0:8080
+GET /version
+```
+
+To test your project on your Mac open the browser and enter the url: `http://localhost:8080/version`
+![image](https://cloud.githubusercontent.com/assets/1082222/20866121/f1f6f7bc-ba24-11e6-9449-aab5b22ae7c7.png)
 
 ## To build all images
 
