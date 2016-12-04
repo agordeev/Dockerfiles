@@ -62,13 +62,13 @@ All images are built in the `Dockerfiles` folder
 
 ### `clang` image
 
-* Image base on: `ubuntu:16:04`
+* Image base on: `ubuntu:16.04`
 * Instruction to build: `docker build -t clang clang/`
 * Description: Create an image with the `clang` environment
 
 ### `swift3` image
 
-* Image base on: `ubuntu:16:04 ► clang`
+* Image base on: `ubuntu:16.04 ► clang`
 * Instruction to build: `docker build -t swift3 swift3/`
 * Description: Install the Swift 3.0.1 environment on Linux. Can be used to build all Swift 3 applications on Linux.
 
@@ -82,7 +82,7 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 ### `vapor` image
 
-* Image base on: `ubuntu:16:04 ► clang ► swift3`
+* Image base on: `ubuntu:16.04 ► clang ► swift3`
 * Instruction to build: `docker build -t vapor vapor/`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
@@ -121,7 +121,7 @@ To test your project on your Mac open the browser and enter the url: `http://loc
 
 ### `vapor-mysql` image
 
-* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
 * Instruction to build: `docker build -t vapor-mysql vapor-mysql/`
 * Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -176,7 +176,7 @@ local               mysql.data
 
 ### `vapor-postgresql` image
 
-* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
 * Instruction to build: `docker build -t vapor-postgresql vapor-postgresql/`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -232,7 +232,7 @@ local               progresql.data
 
 ### `vapor-sqlite` image
 
-* Image base on: `ubuntu:16:04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
 * Instruction to build: `docker build -t vapor-sqlite vapor-sqlite/`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
