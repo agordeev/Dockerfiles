@@ -87,8 +87,13 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor/projects` to `/vapor` on the container: 
+
 ```
-$ docker run -ti --name vapor --rm -p 127.0.0.1:8080:8080 -v /Volumes/Sources/vapor/projects:/vapor vapor
+$ docker run -ti --rm \
+                 --name vapor \
+                 -p 127.0.0.1:8080:8080 \
+                 -v /Volumes/Sources/vapor/projects:/vapor \
+                 vapor
 ```
 
 On the container to build your project (replace `ItWorks` by your project):
