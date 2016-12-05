@@ -280,3 +280,67 @@ $ . build
 ```
 
 This script will build `clang`, `swift3` and all `vapor` images
+
+## Images on the cloud
+
+All images are avalaible on the cloud:
+[![image](https://cloud.githubusercontent.com/assets/1082222/20878077/f46c3e82-bacc-11e6-8bbf-a594e3741d9c.png)](https://store.docker.com/search?q=tofdocker&source=community)
+
+### Run `clang` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name clang \
+                 tofdocker/clang:1.0
+```
+### Run `swift3` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name swift3 \
+                 tofdocker/swift3:1.0
+```
+
+### Run `vapor` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name vapor \
+                 -p 127.0.0.1:8080:8080 \
+                 -v /Volumes/Sources/vapor/projects:/vapor \
+                 tofdocker/vapor:1.0
+```
+
+### Run `vapor-mysql` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name vapor-mysql \
+                 -p 127.0.0.1:8080:8080 \
+                 -p 127.0.0.1:3306:3306 \
+                 -v mysql.data:/var/lib/mysql \
+                 -v /Volumes/Sources/vapor-mysql/projects:/vapor \
+                 tofdocker/vapor-mysql
+```
+
+### Run `vapor-postgresql ` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name vapor-postgresql \
+                 -p 127.0.0.1:8080:8080 \
+                 -p 127.0.0.1:5432:5432 \
+                 -v postgresql.data:/var/lib/postgresql/9.5/main \
+                 -v /Volumes/Sources/vapor-postgresql/projects:/vapor \
+                 tofdocker/vapor-postgresql:1.0
+```
+
+### Run `vapor-sqlite ` image from the cloud
+
+```
+$ docker run -ti --rm \
+                 --name vapor-sqlite \
+                 -p 127.0.0.1:8080:8080 \
+                 -v /Volumes/Sources/vapor-sqlite/projects:/vapor \
+                 tofdocker/vapor-sqlite:1.0
+```
