@@ -212,7 +212,6 @@ To run your project on the container:
 ```
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor run serve
 Running ItWorks-PostgreSQL...
-[DEPRECATED] Providers should implement the `boot(_: Droplet)` method to register dependencies. The `provided` property will be removed in a future update.
 No preparations.
 Server 'default' starting at 0.0.0.0:8080
 GET /version
