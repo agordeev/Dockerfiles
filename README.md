@@ -6,7 +6,7 @@
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.0.1-orange.svg)](https://swift.org/download/)
 [![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.2-orange.svg)](https://github.com/vapor/vapor)
+[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.2.3-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
@@ -81,11 +81,17 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 ![image](https://cloud.githubusercontent.com/assets/1082222/20648514/a84229a0-b4a9-11e6-9ef5-ed31d1fbab4c.png)
 
+#### Trick
+
+Each time you change `package.swift` you must execute `vapor build --clean`
+
+
 ### `vapor` image
 
 * Image base on: `ubuntu:16.04 ► clang ► swift3`
 * Instruction to build: `docker build -t vapor vapor/`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
+
 
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor/projects` to `/vapor` on the container: 
 
@@ -101,7 +107,7 @@ On the container to build your project (replace `ItWorks` by your project):
 
 ```
 root@0f8de5949871:/vapor# cd ItWorks/
-root@0f8de5949871:/vapor/ItWorks# vapor build
+root@0f8de5949871:/vapor/ItWorks# vapor build 
 Fetching Dependencies [Done]
 Building Project [Done]
 ```

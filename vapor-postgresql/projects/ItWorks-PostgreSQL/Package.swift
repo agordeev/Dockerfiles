@@ -3,7 +3,7 @@ import PackageDescription
 let package = Package(
     name: "ItWorks-PostgreSQL",
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", Version(1,2,0)),
+        .Package(url: "https://github.com/vapor/vapor.git", Version(1,2,3)),
         .Package(url: "https://github.com/vapor/postgresql-provider.git", Version(1,1,1))
     ],
     exclude: [
