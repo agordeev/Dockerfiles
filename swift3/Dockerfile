@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN ["/bin/bash", "-c","\
-    export SWIFT=3.0.1 && \
+    export SWIFT=3.0.2 && \
     export UBUNTU=16.04 && \
     export SWIFT_ARCHIVE_NAME=swift-${SWIFT}-RELEASE-ubuntu${UBUNTU} &&  \
     export SWIFT_URL=https://swift.org/builds/swift-${SWIFT}-release/ubuntu${UBUNTU//.}/swift-${SWIFT}-RELEASE/${SWIFT_ARCHIVE_NAME}.tar.gz && \
