@@ -357,7 +357,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:3306:3306 \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
-                 tofdocker/vapor-mysql1.1
+                 tofdocker/vapor-mysql:1.1
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
