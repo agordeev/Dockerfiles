@@ -164,9 +164,9 @@ On the container to build your project (replace `ItWorks-MySQL` by your project)
 
 ```
 root@3922aa89091f:/vapor# cd ItWorks-MySQL/
-root@3922aa89091f:/vapor/ItWorks# # If you update `package.swift` you must execute
-root@3922aa89091f:/vapor/ItWorks# vapor build --clean
-root@3922aa89091f:/vapor/ItWorks# # Otherwise just execute
+root@3922aa89091f:/vapor/ItWorks-MySQL# # If you update `package.swift` you must execute
+root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build --clean
+root@3922aa89091f:/vapor/ItWorks-MySQL# # Otherwise just execute
 root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build
 No Packages folder, fetch may take a while...
 Fetching Dependencies [Done]
@@ -224,9 +224,9 @@ On the container to build your project (replace `ItWorks-PostgreSQL` by your pro
 
 ```
 root@99222e9cb4ac:/vapor# cd ItWorks-PostgreSQL/
-root@99222e9cb4ac:/vapor/ItWorks# # If you update `package.swift` you must execute
-root@99222e9cb4ac:/vapor/ItWorks# vapor build --clean
-root@99222e9cb4ac:/vapor/ItWorks# # Otherwise just execute
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# # If you update `package.swift` you must execute
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build --clean
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# # Otherwise just execute
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build
 No Packages folder, fetch may take a while...
 Fetching Dependencies [Done]
@@ -280,9 +280,9 @@ On the container to build your project (replace `ItWorks-Sqlite ` by your projec
 
 ```
 root@c05cd630ea61:/vapor# cd ItWorks-Sqlite/
-root@c05cd630ea61:/vapor/ItWorks# # If you update `package.swift` you must execute
-root@c05cd630ea61:/vapor/ItWorks# vapor build --clean
-root@c05cd630ea61:/vapor/ItWorks# # Otherwise just execute
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# # If you update `package.swift` you must execute
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor build --clean
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# # Otherwise just execute
 root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor build
 No Packages folder, fetch may take a while...
 Fetching Dependencies [Done]
