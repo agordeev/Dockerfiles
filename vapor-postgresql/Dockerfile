@@ -16,7 +16,7 @@ RUN chmod u+x /tmp/setup.sh && \
 
 EXPOSE 5432
 
-ENTRYPOINT service postgresql start && bash
+CMD service postgresql start && bash
 
 # Launch the image with this command (replace '/Volumes/Sources' by your path)
 #  docker run -ti --name vapor-postgresql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:5432:5432 -v progresql.data:/var/lib/postgresql/9.5/main -v /Volumes/Sources/Dockerfiles/vapor-mpostgresql/projects:/vapor vapor-postgresql
