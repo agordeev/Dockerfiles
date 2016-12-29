@@ -1,0 +1,15 @@
+#!/bin/bash
+START=${1:-0}
+END=${2:-4}
+DIR=$(pwd)
+REPO=tofdocker/
+NAMES=( "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+PROJECTS=( "ItWorks" "ItWorks-MySQL" "ItWorks-PostgreSQL" "ItWorks-Sqlite" )
+for ((I=$START;I<$END;I++))
+do
+ #clear
+ printf "\033[38;5;12mRefresh packages for '${NAMES[$I]}' \033[0m\n"
+ CMD="clear && cd ${PROJECTS[$I]} && echo Project: \$PWD && vapor build --clean"
+ docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
+ docker rm -f $(docker ps -a -q) &> /dev/null
+done
