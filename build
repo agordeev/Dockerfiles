@@ -1,15 +1,37 @@
 #!/bin/bash
-clear
-printf "\033[38;5;12mBuild 'clang' image\033[0m\n" 
-docker build -t clang clang/
-printf "\n\033[38;5;12mBuild 'swift3' image\033[0m\n"
-docker build -t swift3 swift3/
-printf "\n\033[38;5;12mBuild 'vapor' image\033[0m\n"
-docker build -t vapor vapor/
-printf "\n\033[38;5;12mBuild 'vapor-mysql' image\033[0m\n"
-docker build -t vapor-mysql vapor-mysql/
-printf "\n\033[38;5;12mBuild 'vapor-postgresql' image\033[0m\n"
-docker build -t vapor-postgresql vapor-postgresql/
-printf "\n\033[38;5;12mBuild 'vapor-sqlite' image\033[0m\n"
-docker build -t vapor-sqlite vapor-sqlite/
+if [ $1 == "push" ]
+then
+ DOCKERPUSH=1
+ START=0
+else
+ START=${1:-0}
+fi
+
+END=${2:-6}
+DIR=$(pwd)
+REPO=tofdocker/
+FROMS=( "" ":1.1" ":1.1" ":1.2" ":1.2" ":1.2" )
+TAGS=( ":1.1" ":1.1" ":1.2" ":1.2" ":1.2" ":1.2"  )
+NAMES=( "clang" "swift3" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+for ((I=$START;I<$END;I++))
+do
+ clear
+ printf "\033[38;5;12mBuild '${NAMES[$I]}' image\033[0m\n" 
+ docker build -t ${NAMES[$I]} ${NAMES[$I]}/
+ printf "\033[38;5;12mBuild '${REPO}${NAMES[$I]}${TAGS[$I]}' image\033[0m\n" 
+ if [ ! -z "${FROMS[$I]}" ] 
+ then
+  sed -i -e "s|FROM \([^ ]*\)|FROM ${REPO}\1${FROMS[$I]}|" ${NAMES[$I]}/Dockerfile  
+  docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
+  sed -i -e "s|FROM ${REPO}\([^:]*\).*|FROM \1|" ${NAMES[$I]}/Dockerfile  
+  rm ${NAMES[$I]}/Dockerfile-e
+ else
+  docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
+ fi 
+ if [ ! -z "$DOCKERPUSH" ] 
+ then
+  docker push ${REPO}${NAMES[$I]}${TAGS[$I]}  
+ fi
+done
 printf "\n\033[38;5;12mFinished\033[0m\n\n"
+
