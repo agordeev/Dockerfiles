@@ -2,11 +2,11 @@
 
 ![](Dockerfiles.jpg)
 
-[![Docker Version](https://img.shields.io/badge/Docker-1.12.3-6193DF.svg)](https://github.com/docker/docker)
+[![Docker Version](https://img.shields.io/badge/Docker-1.12.5-6193DF.svg)](https://github.com/docker/docker)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.0.2-orange.svg)](https://swift.org/download/)
 [![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.3-orange.svg)](https://github.com/vapor/vapor)
+[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.3.4-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
@@ -343,7 +343,7 @@ $ docker run -ti --rm \
                  --name vapor \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
-                 tofdocker/vapor:1.1
+                 tofdocker/vapor:1.2
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -357,7 +357,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:3306:3306 \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
-                 tofdocker/vapor-mysql:1.1
+                 tofdocker/vapor-mysql:1.2
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -371,7 +371,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:5432:5432 \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
-                 tofdocker/vapor-postgresql:1.1
+                 tofdocker/vapor-postgresql:1.2
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -383,7 +383,7 @@ $ docker run -ti --rm \
                  --name vapor-sqlite \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
-                 tofdocker/vapor-sqlite:1.1
+                 tofdocker/vapor-sqlite:1.2
 ```
 
 ## Resources
