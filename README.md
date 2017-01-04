@@ -6,7 +6,7 @@
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.0.2-orange.svg)](https://swift.org/download/)
 [![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.3-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.3.4-orange.svg)](https://github.com/vapor/vapor)
+[![Vapor Framework](https://img.shields.io/badge/Vapor Framework-1.3.6-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
