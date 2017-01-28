@@ -1,9 +1,8 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y clang libicu-dev curl git && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY install /tmp/install
+RUN chmod u+x /tmp/install && \
+    /tmp/install --package=clang --package=libicu-dev --package=curl --package=git --package=vim --package=tree
 
 ENV PATH /usr/bin:$PATH
 

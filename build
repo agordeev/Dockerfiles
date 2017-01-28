@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $1 == "push" ]
+if [ "$1" == "push" ]
 then
  DOCKERPUSH=1
  START=0
@@ -10,12 +10,11 @@ fi
 END=${2:-6}
 DIR=$(pwd)
 REPO=tofdocker/
-FROMS=( "" ":1.1" ":1.1" ":1.2" ":1.2" ":1.2" )
-TAGS=( ":1.1" ":1.1" ":1.2" ":1.2" ":1.2" ":1.2"  )
+FROMS=( "" ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" )
+TAGS=( ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" ":1.3"  )
 NAMES=( "clang" "swift3" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
 for ((I=$START;I<$END;I++))
 do
- clear
  printf "\033[38;5;12mBuild '${NAMES[$I]}' image\033[0m\n" 
  docker build -t ${NAMES[$I]} ${NAMES[$I]}/
  printf "\033[38;5;12mBuild '${REPO}${NAMES[$I]}${TAGS[$I]}' image\033[0m\n" 
@@ -32,6 +31,7 @@ do
  then
   docker push ${REPO}${NAMES[$I]}${TAGS[$I]}  
  fi
+printf "\n\033[38;5;12m----------------------------------------------------\033[0m\n\n"
 done
 printf "\n\033[38;5;12mFinished\033[0m\n\n"
 

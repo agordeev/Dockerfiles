@@ -1,0 +1,102 @@
+#!/bin/bash
+
+function usage()
+{
+cat << EOF
+
+  Install packages and Swift on Ubuntu
+
+  Syntax:
+    install  --ubuntu=<Ubuntu version>
+             --package=<ubuntu package to install> 
+             [--swift=<Swift version>]
+             [--snapshot=<snapshot date|stable>]        
+
+  Values for snapshot :
+      - a date like '2017-01-15', 
+      - a word like 'today' or 'yesterday'
+EOF
+exit 255
+}
+
+if [ "$#" -eq 1 ] 
+then
+  usage
+else
+  for PARAM in "$@"
+  do
+    case $PARAM in
+        -p=*|--package=*)
+          PACKAGES="$PACKAGES ${PARAM#*=}"
+          shift
+          ;;
+        -s=*|--swift=*)
+          SWIFT="${PARAM#*=}"
+          shift
+          ;;
+        -sn=*|--snapshot=*)
+          SNAPSHOT="${PARAM#*=}"
+          shift
+          ;;
+        -u=*|--ubuntu=*)
+          UBUNTU="${PARAM#*=}"
+          shift
+          ;;
+        *)
+          usage
+        ;;
+    esac
+  done
+fi
+
+# Check parameters
+if [ ! -z "$SNAPSHOT" ] 
+then
+  case $SNAPSHOT in
+    today)
+      SNAPSHOT=$(date +%Y-%m-%d)
+      ;;
+    yesterday)
+      SNAPSHOT=$(date +%Y-%m-%d -d "1 day ago")
+      ;;
+  esac
+fi
+
+
+# Define sudo if not root
+if [[ $EUID -ne 0 ]]
+then
+ SUDO=sudo
+fi
+
+# Ubuntu packages
+if [ ! -z "$PACKAGES" ]
+then
+  $SUDO apt-get update 
+  $SUDO apt-get upgrade -y
+  $SUDO apt-get install -y --no-install-recommends $PACKAGES
+  $SUDO apt-get clean
+  $SUDO rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+fi
+
+#Install Swift
+if [ ! -z "$SWIFT" -o ! -z "$SNAPSHOT" ] 
+then
+  if [ ! -z "$SWIFT" ]
+  then
+    export SWIFT_ARCHIVE_NAME=swift-${SWIFT}-RELEASE-ubuntu${UBUNTU}
+    export SWIFT_URL=https://swift.org/builds/swift-${SWIFT}-release/ubuntu${UBUNTU//.}/swift-${SWIFT}-RELEASE/${SWIFT_ARCHIVE_NAME}.tar.gz
+  else
+    export SWIFT_ARCHIVE_NAME=swift-DEVELOPMENT-SNAPSHOT-${SNAPSHOT}-a-ubuntu${UBUNTU}
+    export SWIFT_URL=https://swift.org/builds/development/ubuntu${UBUNTU//.}/swift-DEVELOPMENT-SNAPSHOT-${SNAPSHOT}-a/${SWIFT_ARCHIVE_NAME}.tar.gz
+  fi
+
+  cd /tmp
+  mkdir swift.org
+  cd swift.org
+  echo "Download: ${SWIFT_URL}"
+  curl -OL ${SWIFT_URL}
+  curl -OL ${SWIFT_URL}.sig
+  $SUDO tar -xvzf ${SWIFT_ARCHIVE_NAME}.tar.gz --directory / --strip-components=1
+  rm -rf /tmp/* /var/tmp/*
+fi
