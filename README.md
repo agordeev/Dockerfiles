@@ -308,7 +308,7 @@ To test your project on your Mac open the browser and enter the url: `http://loc
 Execute command
 
 ```bash
-$ . build
+$ ./build --image=all 
 ```
 
 This script will build `clang`, `swift3` and all `vapor` images
@@ -324,14 +324,14 @@ All images are avalaible on [Docker Store](https://store.docker.com/search?q=tof
 ```
 $ docker run -ti --rm \
                  --name clang \
-                 tofdocker/clang:1.1
+                 tofdocker/clang:1.2
 ```
 ### Run `swift3` image from the cloud
 
 ```
 $ docker run -ti --rm \
                  --name swift3 \
-                 tofdocker/swift3:1.1
+                 tofdocker/swift3:1.2
 ```
 
 ### Run `vapor` image from the cloud
@@ -343,7 +343,7 @@ $ docker run -ti --rm \
                  --name vapor \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
-                 tofdocker/vapor:1.2
+                 tofdocker/vapor:1.3
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -357,7 +357,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:3306:3306 \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
-                 tofdocker/vapor-mysql:1.2
+                 tofdocker/vapor-mysql:1.3
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -371,7 +371,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:5432:5432 \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
-                 tofdocker/vapor-postgresql:1.2
+                 tofdocker/vapor-postgresql:1.3
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -383,7 +383,7 @@ $ docker run -ti --rm \
                  --name vapor-sqlite \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
-                 tofdocker/vapor-sqlite:1.2
+                 tofdocker/vapor-sqlite:1.3
 ```
 
 ## Resources

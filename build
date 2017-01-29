@@ -1,36 +1,106 @@
 #!/bin/bash
-if [ "$1" == "push" ]
+
+function usage()
+{
+ cat << EOF
+
+  Build and/or push images to Docker
+
+  Syntax:
+    build -i, --image=<image you want to build>
+          -f, --from=<version of the parent image> 
+          -t, --tag=<tag for the image> 
+          [-r, --repos=<docker repo by default "tofdocker"]
+          [-p, --push]
+
+  Values for image :
+      - all
+      - clang
+      - swift3
+      - vapor
+      - vapor-mysql
+      - vapor-postgresql
+      - vapor-sqlite
+EOF
+  exit 255
+}
+
+function checkImage() {
+  IMAGE=$1
+   
+  if [ "$IMAGE" == "all" ]
+  then
+    FROMS=( "" ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" )
+    TAGS=( ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" ":1.3"  )
+    NAMES=( "clang" "swift3" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+  else
+    NAMES+=( "$IMAGE" )
+  fi
+}
+
+if [ "$#" -eq 0 ] 
 then
- DOCKERPUSH=1
- START=0
+  usage
 else
- START=${1:-0}
+  NAMES=()	
+  FROMS=()
+  TAGS=()
+  DOCKERPUSH=0
+  REPO="tofdocker/"
+
+  for PARAM in "$@"
+  do
+  	case $PARAM in
+  	    -i=*|--image=*)
+          checkImage "${PARAM#*=}"
+          shift
+    	    ;;
+        -f=*|--from=*)
+          FROMS+=( "${PARAM#*=}" )
+          shift
+          ;;
+        -t=*|--tag=*)
+          TAGS+=( "${PARAM#*=}" )
+          shift
+          ;;
+        -r=*|--repo=*)
+          REPO="${PARAM#*=}/"
+          shift
+          ;;
+        -p|--push)
+          DOCKERPUSH=1
+          shift
+          ;;
+  	    *)
+          usage
+  	    ;;
+  	esac
+  done
 fi
 
-END=${2:-6}
+
 DIR=$(pwd)
-REPO=tofdocker/
-FROMS=( "" ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" )
-TAGS=( ":1.2" ":1.2" ":1.3" ":1.3" ":1.3" ":1.3"  )
-NAMES=( "clang" "swift3" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
-for ((I=$START;I<$END;I++))
+
+printf "\n\033[38;5;12mStart\033[0m\n\n"
+
+for ((I=0;I<${#NAMES[@]};I++))
 do
  printf "\033[38;5;12mBuild '${NAMES[$I]}' image\033[0m\n" 
  docker build -t ${NAMES[$I]} ${NAMES[$I]}/
- printf "\033[38;5;12mBuild '${REPO}${NAMES[$I]}${TAGS[$I]}' image\033[0m\n" 
- if [ ! -z "${FROMS[$I]}" ] 
+ if [ "$DOCKERPUSH" -eq 1 ] 
  then
-  sed -i -e "s|FROM \([^ ]*\)|FROM ${REPO}\1${FROMS[$I]}|" ${NAMES[$I]}/Dockerfile  
-  docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
-  sed -i -e "s|FROM ${REPO}\([^:]*\).*|FROM \1|" ${NAMES[$I]}/Dockerfile  
-  rm ${NAMES[$I]}/Dockerfile-e
- else
-  docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
+  printf "\033[38;5;12mBuild '${REPO}${NAMES[$I]}${TAGS[$I]}' image\033[0m\n" 
+  if [ ! -z "${FROMS[$I]}" ]
+  then
+    sed -i -e "s|FROM \([^ ]*\)|FROM ${REPO}\1${FROMS[$I]}|" ${NAMES[$I]}/Dockerfile  
+    docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
+    sed -i -e "s|FROM ${REPO}\([^:]*\).*|FROM \1|" ${NAMES[$I]}/Dockerfile  
+    rm ${NAMES[$I]}/Dockerfile-e
+   else
+    docker build -t ${REPO}${NAMES[$I]}${TAGS[$I]} ${NAMES[$I]}/
+  fi
+  docker push ${REPO}${NAMES[$I]}${TAGS[$I]}
  fi 
- if [ ! -z "$DOCKERPUSH" ] 
- then
-  docker push ${REPO}${NAMES[$I]}${TAGS[$I]}  
- fi
 printf "\n\033[38;5;12m----------------------------------------------------\033[0m\n\n"
 done
 printf "\n\033[38;5;12mFinished\033[0m\n\n"
