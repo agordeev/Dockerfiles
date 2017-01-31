@@ -9,8 +9,10 @@ cat << EOF
   Syntax:
     install  --ubuntu=<Ubuntu version>
              --package=<ubuntu package to install> 
+             [--clean=<clean packages. Default true>] 
              [--swift=<Swift version>]
-             [--snapshot=<snapshot date|stable>]        
+             [--branch=<branch date>]        
+             [--snapshot=<snapshot date>]        
 
   Values for snapshot :
       - a date like '2017-01-15', 
@@ -23,23 +25,32 @@ if [ "$#" -eq 1 ]
 then
   usage
 else
+  CLEAN=true
   for PARAM in "$@"
   do
     case $PARAM in
+        -u=*|--ubuntu=*)
+          UBUNTU="${PARAM#*=}"
+          shift
+          ;;
         -p=*|--package=*)
           PACKAGES="$PACKAGES ${PARAM#*=}"
+          shift
+          ;;
+        -c=*|--clean=*)
+          CLEAN="${PARAM#*=}"
           shift
           ;;
         -s=*|--swift=*)
           SWIFT="${PARAM#*=}"
           shift
           ;;
-        -sn=*|--snapshot=*)
-          SNAPSHOT="${PARAM#*=}"
+        -b=*|--branch=*)
+          BRANCH="${PARAM#*=}"
           shift
           ;;
-        -u=*|--ubuntu=*)
-          UBUNTU="${PARAM#*=}"
+        -sn=*|--snapshot=*)
+          SNAPSHOT="${PARAM#*=}"
           shift
           ;;
         *)
@@ -75,28 +86,43 @@ then
   $SUDO apt-get update 
   $SUDO apt-get upgrade -y
   $SUDO apt-get install -y --no-install-recommends $PACKAGES
-  $SUDO apt-get clean
-  $SUDO rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  if [ "$CLEAN" == "true" ]
+  then
+    $SUDO apt-get clean
+    $SUDO rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  fi
 fi
 
 #Install Swift
-if [ ! -z "$SWIFT" -o ! -z "$SNAPSHOT" ] 
+if [ ! -z "$SWIFT" -o ! -z "$BRANCH" -o ! -z "$SNAPSHOT" ] 
 then
   if [ ! -z "$SWIFT" ]
   then
     export SWIFT_ARCHIVE_NAME=swift-${SWIFT}-RELEASE-ubuntu${UBUNTU}
     export SWIFT_URL=https://swift.org/builds/swift-${SWIFT}-release/ubuntu${UBUNTU//.}/swift-${SWIFT}-RELEASE/${SWIFT_ARCHIVE_NAME}.tar.gz
-  else
+  fi
+
+  if [ ! -z "$BRANCH" ] 
+  then
+    export SWIFT_ARCHIVE_NAME=swift-${SWIFT}-DEVELOPMENT-SNAPSHOT-${BRANCH}-a-ubuntu${UBUNTU}
+    export SWIFT_URL=https://swift.org/builds/swift-${SWIFT}-branch/ubuntu${UBUNTU//.}/swift-${SWIFT}-DEVELOPMENT-SNAPSHOT-${BRANCH}-a/${SWIFT_ARCHIVE_NAME}.tar.gz
+  fi
+
+  if [ ! -z "$SNAPSHOT" ] 
+  then
     export SWIFT_ARCHIVE_NAME=swift-DEVELOPMENT-SNAPSHOT-${SNAPSHOT}-a-ubuntu${UBUNTU}
     export SWIFT_URL=https://swift.org/builds/development/ubuntu${UBUNTU//.}/swift-DEVELOPMENT-SNAPSHOT-${SNAPSHOT}-a/${SWIFT_ARCHIVE_NAME}.tar.gz
   fi
 
-  cd /tmp
-  mkdir swift.org
-  cd swift.org
-  echo "Download: ${SWIFT_URL}"
-  curl -OL ${SWIFT_URL}
-  curl -OL ${SWIFT_URL}.sig
-  $SUDO tar -xvzf ${SWIFT_ARCHIVE_NAME}.tar.gz --directory / --strip-components=1
-  rm -rf /tmp/* /var/tmp/*
+  if [ ! -z "$SWIFT_URL" ]
+  then
+    cd /tmp
+    mkdir swift.org
+    cd swift.org
+    echo "Download: ${SWIFT_URL}"
+    curl -OL ${SWIFT_URL}
+    curl -OL ${SWIFT_URL}.sig
+    $SUDO tar -xvzf ${SWIFT_ARCHIVE_NAME}.tar.gz --directory / --strip-components=1
+    rm -rf /tmp/swift.org
+  fi
 fi
