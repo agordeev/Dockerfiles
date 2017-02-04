@@ -10,7 +10,7 @@ function usage()
     build -i, --image=<image you want to build>
           -f, --from=<version of the parent image> 
           -t, --tag=<tag for the image> 
-          [-r, --repos=<docker repo by default "tofdocker"]
+          [-r, --repo=<docker repo by default "tofdocker"]
           [-p, --push]
 
   Values for image :
