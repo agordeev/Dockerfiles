@@ -3,7 +3,7 @@ import PackageDescription
 let package = Package(
     name: "ItWorks",
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", Version(1,5,9))
+        .Package(url: "https://github.com/vapor/vapor.git", Version(1,5,15))
     ],
     exclude: [
         "Config",

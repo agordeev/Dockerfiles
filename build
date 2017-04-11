@@ -11,6 +11,7 @@ function usage()
           -f, --from=<version of the parent image> 
           -t, --tag=<tag for the image> 
           [-r, --repo=<docker repo by default "tofdocker"]
+          [-c, --clean]
           [-p, --push]
 
   Values for image :
@@ -31,9 +32,9 @@ function checkImage() {
    
   if [ "$IMAGE" == "all" ]
   then
-    FROMS=( "" ":1.2" ":1.2" ":1.4" ":1.4" ":1.4" )
-    TAGS=( ":1.2" ":1.2" ":1.4" ":1.4" ":1.4" ":1.4"  )
-    NAMES=( "clang" "swift3" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+    FROMS=( "" ":1.3" ":1.0" ":1.5" ":1.5" ":1.5" )
+    TAGS=( ":1.3" ":1.0" ":1.5" ":1.5" ":1.5" ":1.5"  )
+    NAMES=( "clang" "swift31" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
   else
     NAMES+=( "$IMAGE" )
   fi
@@ -68,6 +69,10 @@ else
           REPO="${PARAM#*=}/"
           shift
           ;;
+        -c|--clean)
+          CLEAN="--no-cache=true"
+          shift
+          ;;
         -p|--push)
           DOCKERPUSH=1
           shift
@@ -87,7 +92,7 @@ printf "\n\033[38;5;12mStart\033[0m\n\n"
 for ((I=0;I<${#NAMES[@]};I++))
 do
  printf "\033[38;5;12mBuild '${NAMES[$I]}' image\033[0m\n" 
- docker build -t ${NAMES[$I]} ${NAMES[$I]}/
+ docker build ${CLEAN} -t ${NAMES[$I]} ${NAMES[$I]}/
  if [ "$DOCKERPUSH" -eq 1 ] 
  then
   printf "\033[38;5;12mBuild '${REPO}${NAMES[$I]}${TAGS[$I]}' image\033[0m\n" 

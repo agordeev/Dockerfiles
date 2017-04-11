@@ -1,7 +1,14 @@
-FROM swift3
+FROM swift31
 
 # Install Vapor Toolbox
-RUN curl -sL toolbox.vapor.sh | bash
+RUN cd /tmp && \
+    git clone https://github.com/vapor/toolbox.git && \
+    cd toolbox && \
+    git checkout 1.0.9 && \
+    swift build -c release && \
+    mv .build/release/Executable /usr/local/bin/vapor && \
+    cd /tmp && \
+    rm -rf toolbox 
 
 # Set work dir to /vapor
 WORKDIR /vapor

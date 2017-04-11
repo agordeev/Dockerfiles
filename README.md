@@ -3,14 +3,14 @@
 ![](Dockerfiles.jpg)
 
 [![Docker Version](https://img.shields.io/badge/Docker-17.03-6193DF.svg)](https://github.com/docker/docker)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-16.04-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
-[![Swift Version](https://img.shields.io/badge/Swift-3.0.2-orange.svg)](https://swift.org/download/)
-[![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-1.0.6-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor](https://img.shields.io/badge/Vapor-1.5.9-orange.svg)](https://github.com/vapor/vapor)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-16.10-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
+[![Swift Version](https://img.shields.io/badge/Swift-3.1-orange.svg)](https://swift.org/download/)
+[![Vapor Toolbox](https://img.shields.io/badge/Vapor Toolbox-1.0.9-orange.svg)](https://github.com/vapor/toolbox)
+[![Vapor](https://img.shields.io/badge/Vapor-1.5.15-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
-Collection of Dockerfiles to create Swift 3 environments on Ubuntu 16.04 for developers
+Collection of Dockerfiles to create Swift 3.1 environments on Ubuntu 16.10 for developers
 
 ## Table of contents
 
@@ -64,23 +64,23 @@ All images are built in the `Dockerfiles` folder
 
 ### `clang` image
 
-* Image base on: `ubuntu:16.04`
+* Image base on: `ubuntu:16.10`
 * Instruction to build: `docker build -t clang clang/`
 * Description: Create an image with the `clang` environment
 
-### `swift3` image
+### `swift31` image
 
-* Image base on: `ubuntu:16.04 ► clang`
+* Image base on: `ubuntu:16.10 ► clang`
 * Instruction to build: `docker build -t swift3 swift3/`
-* Description: Install the Swift 3.0.2 environment on Linux. Can be used to build all Swift 3 applications on Linux.
+* Description: Install the Swift 3.1 environment on Linux. Can be used to build all Swift 3.1 applications on Linux.
 
 ```
 $ docker run -ti --rm \
-                 --name swift3 \
-                 swift3
+                 --name swift31 \
+                 swift31
 
 root@d712e29a31df:/# swift --version
-Swift version 3.0.2 (swift-3.0.2-RELEASE)
+Swift version 3.1 (swift-3.1-RELEASE)
 Target: x86_64-unknown-linux-gnu
 ```
 
@@ -94,7 +94,7 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 ### `vapor` image
 
-* Image base on: `ubuntu:16.04 ► clang ► swift3`
+* Image base on: `ubuntu:16.10 ► clang ► swift31`
 * Instruction to build: `docker build -t vapor vapor/`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
@@ -139,7 +139,7 @@ To test your project on your Mac open the browser and enter the url: `http://loc
 
 ### `vapor-mysql` image
 
-* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.10 ► clang ► swift31 ► vapor`
 * Instruction to build: `docker build -t vapor-mysql vapor-mysql/`
 * Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -199,7 +199,7 @@ local               mysql.data
 
 ### `vapor-postgresql` image
 
-* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.10 ► clang ► swift31 ► vapor`
 * Instruction to build: `docker build -t vapor-postgresql vapor-postgresql/`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -259,7 +259,7 @@ local               progresql.data
 
 ### `vapor-sqlite` image
 
-* Image base on: `ubuntu:16.04 ► clang ► swift3 ► vapor`
+* Image base on: `ubuntu:16.10 ► clang ► swift31 ► vapor`
 * Instruction to build: `docker build -t vapor-sqlite vapor-sqlite/`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -324,14 +324,14 @@ All images are avalaible on [Docker Store](https://store.docker.com/search?q=tof
 ```
 $ docker run -ti --rm \
                  --name clang \
-                 tofdocker/clang:1.2
+                 tofdocker/clang:1.3
 ```
 ### Run `swift3` image from the cloud
 
 ```
 $ docker run -ti --rm \
-                 --name swift3 \
-                 tofdocker/swift3:1.2
+                 --name swift31 \
+                 tofdocker/swift31:1.0
 ```
 
 ### Run `vapor` image from the cloud
@@ -343,7 +343,7 @@ $ docker run -ti --rm \
                  --name vapor \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
-                 tofdocker/vapor:1.4
+                 tofdocker/vapor:1.5
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -357,7 +357,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:3306:3306 \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
-                 tofdocker/vapor-mysql:1.4
+                 tofdocker/vapor-mysql:1.5
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -371,7 +371,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:5432:5432 \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
-                 tofdocker/vapor-postgresql:1.4
+                 tofdocker/vapor-postgresql:1.5
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -383,7 +383,7 @@ $ docker run -ti --rm \
                  --name vapor-sqlite \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
-                 tofdocker/vapor-sqlite:1.4
+                 tofdocker/vapor-sqlite:1.5
 ```
 
 ## Resources
