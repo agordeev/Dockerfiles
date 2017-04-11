@@ -1,7 +1,7 @@
 # Dockerfiles for Swift
 
-![Version Ubuntu 16.10 & Swift 3.1](https://img.shields.io/badge/Dockerfiles-Ubuntu%2016.10%20%2B%20Swift%203.1-lightgrey.svg)
-[![Version Ubuntu 16.04 & Swift 3.0.2](https://img.shields.io/badge/Dockerfiles-Ubuntu%2016.04%20%2B%20Swift%203.0.2-blue.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3)
+![Version Ubuntu 16.10 & Swift 3.1](https://img.shields.io/badge/Version-Ubuntu%2016.10%20%2B%20Swift%203.1-blue.svg)
+[![Version Ubuntu 16.04 & Swift 3.0.2](https://img.shields.io/badge/Version-Ubuntu%2016.04%20%2B%20Swift%203.0.2-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3)
 
 ![](Dockerfiles.jpg)
 
