@@ -25,7 +25,7 @@ Collection of Dockerfiles to create Swift 3.1 environments on Ubuntu 16.10 for d
   * [Install environment](#install-environment)
 * [Basic Images](#basic-images)
   * [`clang` image](#clang-image)
-  * [`swift3` image](#swift3-image)
+  * [`swift31` image](#swift31-image)
 * [Vapor Images](#vapor-images)
   * [`vapor` image](#vapor-image)
   * [`vapor-mysql` image](#vapor-mysql-image)
