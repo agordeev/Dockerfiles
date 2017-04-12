@@ -340,6 +340,7 @@ $ pwd
 $ docker run -ti --rm \
                  --name swift31 \
                  -v $(pwd)/swift31/projects:/projects \
+	                --privileged=true \
                  tofdocker/swift31:1.0
 ```
 
@@ -352,6 +353,7 @@ $ docker run -ti --rm \
                  --name vapor \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
+	                --privileged=true \
                  tofdocker/vapor:1.5
 ```
 
@@ -366,6 +368,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:3306:3306 \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
+	                --privileged=true \
                  tofdocker/vapor-mysql:1.5
 ```
 
@@ -380,6 +383,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:5432:5432 \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
+	                --privileged=true \
                  tofdocker/vapor-postgresql:1.5
 ```
 
@@ -392,6 +396,7 @@ $ docker run -ti --rm \
                  --name vapor-sqlite \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
+	                --privileged=true \
                  tofdocker/vapor-sqlite:1.5
 ```
 
