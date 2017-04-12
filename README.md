@@ -325,15 +325,21 @@ All images are avalaible on [Docker Store](https://store.docker.com/search?q=tof
 ### Run `clang` image from the cloud
 
 ```
+$ pwd
+/Volumes/Sources/
 $ docker run -ti --rm \
                  --name clang \
+                 -v $(pwd)/clang/projects:/projects \
                  tofdocker/clang:1.3
 ```
 ### Run `swift3` image from the cloud
 
 ```
+$ pwd
+/Volumes/Sources/
 $ docker run -ti --rm \
                  --name swift31 \
+                 -v $(pwd)/swift31/projects:/projects \
                  tofdocker/swift31:1.0
 ```
 
