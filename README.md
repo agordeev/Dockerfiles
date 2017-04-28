@@ -1,6 +1,6 @@
 # Dockerfiles for Swift
 
-[![Branch Ubuntu 16.10 & Swift 3.1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1-blue.svg)](https://github.com/TofPlay/Dockerfiles)
+[![Branch Ubuntu 16.10 & Swift 3.1.1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1-blue.svg)](https://github.com/TofPlay/Dockerfiles)
 [![Branch Ubuntu 16.04 & Swift 3.0.2](https://img.shields.io/badge/Branch-Ubuntu%2016.04%20%2B%20Swift%203.0.2-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3)
 
 ![](Dockerfiles.jpg)
@@ -330,7 +330,7 @@ $ pwd
 $ docker run -ti --rm \
                  --name clang \
                  -v $(pwd)/clang/projects:/projects \
-                 tofdocker/clang:1.3
+                 tofdocker/clang:1.4
 ```
 ### Run `swift3` image from the cloud
 
@@ -341,7 +341,7 @@ $ docker run -ti --rm \
                  --name swift31 \
                  -v $(pwd)/swift31/projects:/projects \
 	         --privileged=true \
-                 tofdocker/swift31:1.0
+                 tofdocker/swift31:1.1
 ```
 
 ### Run `vapor` image from the cloud
@@ -354,7 +354,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor:1.5
+                 tofdocker/vapor:1.6
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -369,7 +369,7 @@ $ docker run -ti --rm \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor-mysql:1.5
+                 tofdocker/vapor-mysql:1.6
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -384,7 +384,7 @@ $ docker run -ti --rm \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor-postgresql:1.5
+                 tofdocker/vapor-postgresql:1.6
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -397,7 +397,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor-sqlite:1.5
+                 tofdocker/vapor-sqlite:1.6
 ```
 
 ## Resources
