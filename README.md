@@ -15,6 +15,8 @@
 
 Collection of Dockerfiles to create Swift 3.1.1 environments on Ubuntu 16.10 for developers
 
+---
+
 ## Table of contents
 
 * [Docker](#docker)
