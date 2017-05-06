@@ -75,7 +75,7 @@ All images are built in the `Dockerfiles` folder
 
 * Image base on: `ubuntu:16.10 ► clang`
 * Instruction to build: `docker build -t swift31 swift31/`
-* Description: Install the Swift 3.1 environment on Linux. Can be used to build all Swift 3.1 applications on Linux.
+* Description: Install the Swift 3.1.1 environment on Linux. Can be used to build all Swift 3.1.1 applications on Linux.
 
 ```
 $ docker run -ti --rm \
@@ -83,7 +83,7 @@ $ docker run -ti --rm \
                  swift31
 
 root@d712e29a31df:/# swift --version
-Swift version 3.1 (swift-3.1-RELEASE)
+Swift version 3.1.1 (swift-3.1.1-RELEASE)
 Target: x86_64-unknown-linux-gnu
 ```
 
