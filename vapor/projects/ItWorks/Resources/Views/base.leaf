@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    #import("head")
+	<title>#import("title")</title>
+	<link rel="stylesheet" href="/styles/app.css">
 </head>
-    <body>
-        #import("body")
-    </body>
+<body>
+
+#import("content")
+
+</body>
 </html>

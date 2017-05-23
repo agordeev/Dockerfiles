@@ -10,5 +10,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y sqlite3 libsqlite3-dev && 
 
 CMD bash
 
-# Launch the image with this command (replace '/Volumes/Sources' by your path)
-#  docker run -ti --name vapor-sqlite --rm -p 127.0.0.1:8080:8080 -v /Volumes/Sources/Dockerfiles/vapor-sqlite/projects:/vapor vapor-sqlite
+# Launch the image with this command: 
+# docker run -ti --rm --name vapor-sqlite -p 127.0.0.1:8080:8080 -v $(pwd)/vapor-sqlite/projects:/vapor vapor-sqlite

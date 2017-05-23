@@ -14,7 +14,7 @@ RUN { \
         echo mysql-community-server mysql-community-server/remove-test-db \
             select false; \
     } | debconf-set-selections && \
-    apt-get install -y mysql-server libmysqlclient-dev && \
+    apt-get install -y mysql-server cmysql && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
@@ -28,5 +28,5 @@ EXPOSE 3306
 
 CMD service mysql start && bash
 
-# Launch the image with this command (replace '/Volumes/Sources' by your path)
-#  docker run -ti --name vapor-mysql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306 -v /Volumes/Sources/Dockerfiles/vapor-mysql/projects:/vapor vapor-mysql 
+# Launch the image with this command: 
+# docker run -ti --rm --name vapor-mysql -p 127.0.0.1:8080:8080 -p 127.0.0.1:3306:3306 -v mysql.data:/var/lib/mysql -v $(pwd)/vapor-mysql/projects:/vapor vapor-mysql

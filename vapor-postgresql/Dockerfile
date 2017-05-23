@@ -18,5 +18,5 @@ EXPOSE 5432
 
 CMD service postgresql start && bash
 
-# Launch the image with this command (replace '/Volumes/Sources' by your path)
-#  docker run -ti --name vapor-postgresql --rm -p 127.0.0.1:8080:8080 -p 127.0.0.1:5432:5432 -v progresql.data:/var/lib/postgresql/9.5/main -v /Volumes/Sources/Dockerfiles/vapor-mpostgresql/projects:/vapor vapor-postgresql
+# Launch the image with this command: 
+# docker run -ti --rm --name vapor-postgresql -p 127.0.0.1:8080:8080 -p 127.0.0.1:5432:5432 -v postgresql.data:/var/lib/postgresql/9.5/main -v $(pwd)/vapor-postgresql/projects:/vapor vapor-postgresql
