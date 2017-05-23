@@ -1,10 +1,5 @@
 # Dockerfiles for Swift
 
-[![Branch Ubuntu 16.10 & Swift 3.1.1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1-blue.svg)](https://github.com/TofPlay/Dockerfiles)
-[![Branch Ubuntu 16.04 & Swift 3.0.2](https://img.shields.io/badge/Branch-Ubuntu%2016.04%20%2B%20Swift%203.0.2-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3)
-
-![](Dockerfiles.jpg)
-
 [![Docker Version](https://img.shields.io/badge/Docker-17.03-6193DF.svg)](https://github.com/docker/docker)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.10-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.1.1-orange.svg)](https://swift.org/download/)
@@ -12,6 +7,12 @@
 [![Vapor](https://img.shields.io/badge/Vapor-1.5.15-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+
+![](Dockerfiles.jpg)
+
+[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%202-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles)
+[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%201-blue.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1610_swift31_vapor1)
+[![Branch Ubuntu 16.04 & Swift 3.0.2 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.04%20%2B%20Swift%203.0.2%20%2B%20Vapor%201-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3_vapor1)
 
 Collection of Dockerfiles to create Swift 3.1.1 environments on Ubuntu 16.10 for developers
 
