@@ -328,7 +328,7 @@ Database prepared
 Starting server on 0.0.0.0:8080
 ```
 
-To test your project on your Mac open the browser and enter the url: `http://localhost:8080/version`
+To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
 ![image](https://cloud.githubusercontent.com/assets/1082222/26355597/9313c056-3fc9-11e7-9842-b8c1167bdd25.png)
 
 ## To build all images
