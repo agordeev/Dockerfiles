@@ -8,3 +8,6 @@ RUN /tmp/install --package=git --package=vim --package=tree
 RUN /tmp/install --clean=true
 
 ENV PATH /usr/bin:$PATH
+
+# Set work dir to /projects
+WORKDIR /projects
