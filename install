@@ -84,7 +84,7 @@ then
 fi
 
 # Update packages
-if [ ! -z "$APT" -o ! -z "$PACKAGES" ]
+if [ ! -z "$APT" -a ! -z "$SOURCE" ]
 then
   echo "---------------------------------"
   echo "Update packages"
@@ -102,7 +102,7 @@ then
   echo "---------------------------------"
   echo "Add vapor packages"
   echo "---------------------------------"
-  $SUDO eval "$(cat /etc/lsb-release)"
+  eval "$($SUDO cat /etc/lsb-release)"
   $SUDO apt-get -q update
   $SUDO apt-get -q install -y wget software-properties-common python-software-properties apt-transport-https
   $SUDO wget -q https://repo.vapor.codes/apt/keyring.gpg -O- | $SUDO apt-key add -
