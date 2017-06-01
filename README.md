@@ -345,7 +345,7 @@ This script will build `clang`, `swift3` and all `vapor` images
 
 All images are avalaible on [Docker Store](https://store.docker.com/search?q=tofdocker&source=community):
 
-[![image](https://cloud.githubusercontent.com/assets/1082222/21267052/e9ec719a-c3a8-11e6-9bbe-28979d6a622a.png)](https://store.docker.com/search?q=tofdocker&source=community)
+![image](https://cloud.githubusercontent.com/assets/1082222/26665684/b1ea7d66-469b-11e7-9108-c8973770d2f7.png)
 
 ### Run `clang` image from the cloud
 
