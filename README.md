@@ -1,10 +1,10 @@
 # Dockerfiles for Swift
 
-[![Docker Version](https://img.shields.io/badge/Docker-17.03-6193DF.svg)](https://github.com/docker/docker)
+[![Docker Version](https://img.shields.io/badge/Docker-17.06.1-6193DF.svg)](https://github.com/docker/docker)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.10-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.1.1-orange.svg)](https://swift.org/download/)
-[![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-2.0.3-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor](https://img.shields.io/badge/Vapor-2.0.1-orange.svg)](https://github.com/vapor/vapor)
+[![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-2.0.4-orange.svg)](https://github.com/vapor/toolbox)
+[![Vapor](https://img.shields.io/badge/Vapor-2.1.3-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
@@ -71,13 +71,29 @@ All images are built in the `Dockerfiles` folder
 ### `clang` image
 
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `docker build -t clang clang/`
+* Instruction to build: `./build --name=clang`
 * Description: Create an image with the `clang` environment
+
+### `swift4` image
+
+* Image base on: `ubuntu:16.10`
+* Instruction to build: `./build --name=swift4`
+* Description: Install the Swift 4.0 environment on Linux. Actually configure with development branch of Swift 4. Don't use in production!!!
+
+```
+$ docker run -ti --rm \
+                 --name swift4 \
+                 swift4
+
+root@bc420c0ed285:/projects# swift --version
+Swift version 4.0-dev (LLVM 2dedb62a0b, Clang b9d76a314c, Swift d3ac588f43)
+Target: x86_64-unknown-linux-gnu
+```
 
 ### `swift31` image
 
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `docker build -t swift31 swift31/`
+* Instruction to build: `./build --name=swift31`
 * Description: Install the Swift 3.1.1 environment on Linux. Can be used to build all Swift 3.1.1 applications on Linux.
 
 ```
@@ -100,8 +116,9 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 ### `vapor` image
 
+* Swift version: 3.1.1
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `docker build -t vapor vapor/`
+* Instruction to build: `./build --name=vapor`
 * Project generate with: `vapor new ItWorks --template=web`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
@@ -149,8 +166,9 @@ To test your project on your Mac open the browser and enter the url: `http://loc
 
 ### `vapor-mysql` image
 
+* Swift version: 3.1.1
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `docker build -t vapor-mysql vapor-mysql/`
+* Instruction to build: `./build --name=vapor-mysql`
 * Project generate with: `vapor new ItWorks-MySQL --template=api`
 * Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -215,8 +233,9 @@ local               mysql.data
 
 ### `vapor-postgresql` image
 
+* Swift version: 3.1.1
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `docker build -t vapor-postgresql vapor-postgresql/`
+* Instruction to build: `./build --name=vapor-postgresql`
 * Project generate with: `vapor new ItWorks-PostgreSQL --template=api`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -281,8 +300,9 @@ local               progresql.data
 
 ### `vapor-sqlite` image
 
+* Swift version: 3.1.1
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `docker build -t vapor-sqlite vapor-sqlite/`
+* Instruction to build: `./build --name=vapor-sqlite`
 * Project generate with: `vapor new ItWorks-Sqlite --template=api`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -357,6 +377,18 @@ $ docker run -ti --rm \
                  -v $(pwd)/clang/projects:/projects \
                  tofdocker/clang:1.5
 ```
+### Run `swift4` image from the cloud (Beta version)
+
+```
+$ pwd
+/Volumes/Sources/
+$ docker run -ti --rm \
+                 --name swift4 \
+                 -v $(pwd)/swift4/projects:/projects \
+                 --privileged=true \
+                 tofdocker/swift4:0.1
+```
+
 ### Run `swift3` image from the cloud
 
 ```
