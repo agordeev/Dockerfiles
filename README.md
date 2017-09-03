@@ -4,7 +4,7 @@
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.10-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
 [![Swift Version](https://img.shields.io/badge/Swift-3.1.1-orange.svg)](https://swift.org/download/)
 [![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-2.0.4-orange.svg)](https://github.com/vapor/toolbox)
-[![Vapor](https://img.shields.io/badge/Vapor-2.1.3-orange.svg)](https://github.com/vapor/vapor)
+[![Vapor](https://img.shields.io/badge/Vapor-2.2.2-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
@@ -375,7 +375,7 @@ $ pwd
 $ docker run -ti --rm \
                  --name clang \
                  -v $(pwd)/clang/projects:/projects \
-                 tofdocker/clang:1.5
+                 tofdocker/clang:1.6
 ```
 ### Run `swift4` image from the cloud (Beta version)
 
@@ -398,7 +398,7 @@ $ docker run -ti --rm \
                  --name swift31 \
                  -v $(pwd)/swift31/projects:/projects \
                  --privileged=true \
-                 tofdocker/swift31:1.2
+                 tofdocker/swift31:1.3
 ```
 
 ### Run `vapor` image from the cloud
@@ -411,7 +411,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor:1.7
+                 tofdocker/vapor:1.8
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -426,7 +426,7 @@ $ docker run -ti --rm \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor-mysql:1.7
+                 tofdocker/vapor-mysql:1.8
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -441,7 +441,7 @@ $ docker run -ti --rm \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor-postgresql:1.7
+                 tofdocker/vapor-postgresql:1.8
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -454,7 +454,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor-sqlite:1.7
+                 tofdocker/vapor-sqlite:1.8
 ```
 
 ## Resources
