@@ -17,6 +17,7 @@ function usage()
   Values for image :
       - all
       - clang
+      - swift4
       - swift31
       - vapor
       - vapor-mysql
@@ -32,9 +33,9 @@ function checkImage() {
    
   if [ "$IMAGE" == "all" ]
   then
-    FROMS=( "" "" "" ":1.7" ":1.7" ":1.7" )
-    TAGS=( ":1.5" ":1.2" ":1.7" ":1.7" ":1.7" ":1.7" )
-    NAMES=( "clang" "swift31" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+    FROMS=( "" "" "" "" ":1.8" ":1.8" ":1.8" )
+    TAGS=( ":1.6" ":1.3" ":0.1" ":1.8" ":1.8" ":1.8" ":1.8" )
+    NAMES=( "clang" "swift31" "swift4" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
   else
     NAMES+=( "$IMAGE" )
   fi

@@ -10,6 +10,7 @@ cat << EOF
   Syntax:
     install  --ubuntu=<Ubuntu version>
              --package=<ubuntu package to install> 
+             [--update=<force update. Default false>] 
              [--clean=<clean packages. Default false>] 
              [--source=<apple|apt>]
              [--apt=<Add APT sources]
@@ -30,6 +31,7 @@ if [ "$#" -eq 0 ]
 then
   usage
 else
+  UPDATE="false"
   CLEAN="false"
   for PARAM in "$@"
   do
@@ -40,6 +42,10 @@ else
           ;;
         --package=*)
           PACKAGES="$PACKAGES ${PARAM#*=}"
+          shift
+          ;;
+        --update=*)
+          UPDATE="${PARAM#*=}"
           shift
           ;;
         --clean=*)
@@ -84,7 +90,7 @@ then
 fi
 
 # Update packages
-if [ ! -z "$APT" -a ! -z "$SOURCE" ]
+if [ "$UPDATE" == "true" ]
 then
   echo "---------------------------------"
   echo "Update packages"
@@ -143,10 +149,10 @@ then
       # Check branch date
       case $BRANCH in
         today)
-          SBRANCH=$(date +%Y-%m-%d)
+          BRANCH=$(date +%Y-%m-%d)
           ;;
         yesterday)
-          SBRANCH=$(date +%Y-%m-%d -d "1 day ago")
+          BRANCH=$(date +%Y-%m-%d -d "1 day ago")
           ;;
       esac
       export SWIFT_ARCHIVE_NAME=swift-${SWIFT}-DEVELOPMENT-SNAPSHOT-${BRANCH}-a-ubuntu${UBUNTU}

@@ -1,15 +1,92 @@
 #!/bin/bash
-START=${1:-0}
-END=${2:-4}
-DIR=$(pwd)
-REPO=tofdocker/
-NAMES=( "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
-PROJECTS=( "ItWorks" "ItWorks-MySQL" "ItWorks-PostgreSQL" "ItWorks-Sqlite" )
-for ((I=$START;I<$END;I++))
-do
- #clear
- printf "\033[38;5;12mRefresh packages for '${NAMES[$I]}' \033[0m\n"
- CMD="clear && cd ${PROJECTS[$I]} && echo Project: \$PWD && vapor build --clean"
- docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
- docker rm -f $(docker ps -a -q) &> /dev/null
-done
+function usage()
+{
+cat << EOF
+
+  Refresh vapor packages
+
+  Syntax:
+    vapor-refresh-packages  --vapor=<environment name> [--clean]
+            
+  Values for environment:
+      - alone 
+      - mysql
+      - postgresql
+      - sqlite
+      - all
+
+EOF
+exit 255
+}
+
+function project() 
+{
+  case $1 in
+    alone)
+      NAMES+=("vapor")
+      PROJECTS+=("ItWorks")
+      ;;
+    mysql)
+      NAMES+=("vapor-mysql")
+      PROJECTS+=("ItWorks-MySQL")
+      ;;
+    postgresql)
+      NAMES+=("vapor-postgresql")
+      PROJECTS+=("ItWorks-PostgreSQL")
+      ;;
+    sqlite)
+      NAMES+=("vapor-sqlite")
+      PROJECTS+=("ItWorks-Sqlite")
+      ;;
+    all)
+      NAMES=( "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+      PROJECTS=( "ItWorks" "ItWorks-MySQL" "ItWorks-PostgreSQL" "ItWorks-Sqlite" )
+      ;;
+  esac
+}
+
+if [ "$#" -eq 0 ] 
+then
+  usage
+else
+  NAMES=()
+  PROJECTS=()
+  CLEAN=false
+  for PARAM in "$@"
+  do
+    case $PARAM in
+        --vapor=*)
+          project "${PARAM#*=}"
+          shift
+          ;;
+        --clean)
+          CLEAN=true
+          shift
+          ;;
+        *)
+          usage
+          ;;
+    esac
+  done
+fi
+
+if [ ${#NAMES[@]} -gt 0 ]
+then
+  DIR=$(pwd)
+
+  for ((I=0;I<${#NAMES[@]};I++))
+  do
+   #clear
+   printf "\033[38;5;12mRefresh packages for '${NAMES[$I]}' \033[0m\n"
+   
+   if [ $CLEAN == true ]
+   then
+     CMD="cd ${PROJECTS[$I]} && echo Project: \$PWD && rm -rf Package.pins .build && vapor build"
+   else
+     CMD="cd ${PROJECTS[$I]} && echo Project: \$PWD && vapor update && vapor build"
+   fi
+   
+   docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
+   docker rm -f $(docker ps -a -q) &> /dev/null
+  done
+fi
