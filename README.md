@@ -84,6 +84,7 @@ All images are built in the `Dockerfiles` folder
 ```
 $ docker run -ti --rm \
                  --name swift4 \
+                 -v $(pwd)/swift4/projects:/projects \
                  swift4
 
 root@bc420c0ed285:/projects# swift --version
@@ -100,6 +101,7 @@ Target: x86_64-unknown-linux-gnu
 ```
 $ docker run -ti --rm \
                  --name swift31 \
+                 -v $(pwd)/swift31/projects:/projects \
                  swift31
 
 root@d712e29a31df:/# swift --version
