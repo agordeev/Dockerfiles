@@ -11,7 +11,7 @@
 ![](https://user-images.githubusercontent.com/1082222/32498908-503c58f6-c3d1-11e7-9964-d075841be004.jpg)
 
 [![Branch Ubuntu 16.10 & Swift 4.0.2 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%204.0.2%20%2B%20Vapor%202-blue.svg)](https://github.com/TofPlay/Dockerfiles)
-[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%202-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles)
+[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%202-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1610_swift311_vapor2)
 [![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%201-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1610_swift31_vapor1)
 [![Branch Ubuntu 16.04 & Swift 3.0.2 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.04%20%2B%20Swift%203.0.2%20%2B%20Vapor%201-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3_vapor1)
 
