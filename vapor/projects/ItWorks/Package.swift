@@ -7,7 +7,7 @@ let package = Package(
         Target(name: "Run", dependencies: ["App"]),
     ],
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", "2.2.2"),
+        .Package(url: "https://github.com/vapor/vapor.git", "2.3.0"),
         .Package(url: "https://github.com/vapor/leaf-provider.git", "1.1.0"),
     ],
     exclude: [

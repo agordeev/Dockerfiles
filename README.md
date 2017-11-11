@@ -1,20 +1,21 @@
 # Dockerfiles for Swift
 
-[![Docker Version](https://img.shields.io/badge/Docker-17.06.1-6193DF.svg)](https://github.com/docker/docker)
+[![Docker Version](https://img.shields.io/badge/Docker-17.09.0-6193DF.svg)](https://github.com/docker/docker)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-16.10-6193DF.svg)](https://store.docker.com/images/414e13de-f1ba-40d0-9867-08f2e5884b3f?tab=description)
-[![Swift Version](https://img.shields.io/badge/Swift-3.1.1-orange.svg)](https://swift.org/download/)
-[![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-2.0.4-orange.svg)](https://github.com/vapor/toolbox)
+[![Swift Version](https://img.shields.io/badge/Swift-4.0.2-orange.svg)](https://swift.org/download/)
+[![Vapor Toolbox](https://img.shields.io/badge/Vapor%20Toolbox-3.1.2-orange.svg)](https://github.com/vapor/toolbox)
 [![Vapor](https://img.shields.io/badge/Vapor-2.2.2-orange.svg)](https://github.com/vapor/vapor)
 ![Plaform](https://img.shields.io/badge/Platform-Linux-lightgrey.svg)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
-![](Dockerfiles.jpg)
+![](https://user-images.githubusercontent.com/1082222/32498908-503c58f6-c3d1-11e7-9964-d075841be004.jpg)
 
-[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%202-blue.svg)](https://github.com/TofPlay/Dockerfiles)
+[![Branch Ubuntu 16.10 & Swift 4.0.2 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%204.0.2%20%2B%20Vapor%202-blue.svg)](https://github.com/TofPlay/Dockerfiles)
+[![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 2](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%202-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles)
 [![Branch Ubuntu 16.10 & Swift 3.1.1 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.10%20%2B%20Swift%203.1.1%20%2B%20Vapor%201-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1610_swift31_vapor1)
 [![Branch Ubuntu 16.04 & Swift 3.0.2 & Vapor 1](https://img.shields.io/badge/Branch-Ubuntu%2016.04%20%2B%20Swift%203.0.2%20%2B%20Vapor%201-lightgrey.svg)](https://github.com/TofPlay/Dockerfiles/tree/ubuntu1604_swift3_vapor1)
 
-Collection of Dockerfiles to create Swift 3.1.1 environments on Ubuntu 16.10 for developers
+Collection of Dockerfiles to create Swift 4.0.2 environments on Ubuntu 16.10 for developers
 
 ---
 
@@ -72,40 +73,24 @@ All images are built in the `Dockerfiles` folder
 ### `clang` image
 
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `./build --name=clang`
+* Instruction to build: `./build --image=clang`
 * Description: Create an image with the `clang` environment
 
 ### `swift4` image
 
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `./build --name=swift4`
+* Instruction to build: `./build --image=swift4`
 * Description: Install the Swift 4.0 environment on Linux. Actually configure with development branch of Swift 4. Don't use in production!!!
 
 ```
 $ docker run -ti --rm \
+                 --privileged=true \
                  --name swift4 \
                  -v $(pwd)/swift4/projects:/projects \
                  swift4
 
-root@bc420c0ed285:/projects# swift --version
-Swift version 4.0-dev (LLVM 2dedb62a0b, Clang b9d76a314c, Swift d3ac588f43)
-Target: x86_64-unknown-linux-gnu
-```
-
-### `swift31` image
-
-* Image base on: `ubuntu:16.10`
-* Instruction to build: `./build --name=swift31`
-* Description: Install the Swift 3.1.1 environment on Linux. Can be used to build all Swift 3.1.1 applications on Linux.
-
-```
-$ docker run -ti --rm \
-                 --name swift31 \
-                 -v $(pwd)/swift31/projects:/projects \
-                 swift31
-
-root@d712e29a31df:/# swift --version
-Swift version 3.1.1 (swift-3.1.1-RELEASE)
+root@8d2c9f107b3d:/projects# swift --version
+Swift version 4.0.2 (swift-4.0.2-RELEASE)
 Target: x86_64-unknown-linux-gnu
 ```
 
@@ -119,9 +104,9 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 
 ### `vapor` image
 
-* Swift version: 3.1.1
+* Swift version: 4.0.2
 * Image base on: `ubuntu:16.10`
-* Instruction to build: `./build --name=vapor`
+* Instruction to build: `./build --image=vapor`
 * Project generate with: `vapor new ItWorks --template=web`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
@@ -153,7 +138,7 @@ Building Project [Done]
 To run your project on the container:
 
 ```
-root@0f8de5949871:/vapor/ItWorks# vapor run serve
+root@5a8d6cc0cdc7:/vapor/ItWorks# vapor run serve
 Running ItWorks ...
 The current hash key "0000000000000000" is not secure.
 Update hash.key in Config/crypto.json before using in production.
@@ -162,16 +147,19 @@ The current cipher key "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" is not sec
 Update cipher.key in Config/crypto.json before using in production.
 Use `openssl rand -base64 32` to generate a random string.
 Starting server on 0.0.0.0:8080
+GET /
+GET /styles/app.css
+GET /images/it-works.png
 ```
 
-To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
+To test your project on your Mac open the browser and enter the url: [http://localhost:8080/](http://localhost:8080/)
 ![image](https://cloud.githubusercontent.com/assets/1082222/26242335/59810298-3c88-11e7-8b65-106ca873bac6.png)
 
 ### `vapor-mysql` image
 
-* Swift version: 3.1.1
+* Swift version: 4.0.2
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `./build --name=vapor-mysql`
+* Instruction to build: `./build --image=vapor-mysql`
 * Project generate with: `vapor new ItWorks-MySQL --template=api`
 * Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -209,7 +197,7 @@ root@3922aa89091f:/vapor/ItWorks-MySQL#
 To run your project on the container:
 
 ```
-root@3922aa89091f:/vapor/ItWorks-MySQL# vapor run serve
+root@f4d20b98868b:/vapor/ItWorks-MySQL# vapor run serve
 Running ItWorks-MySQL ...
 The current hash key "0000000000000000" is not secure.
 Update hash.key in Config/crypto.json before using in production.
@@ -219,9 +207,10 @@ Update cipher.key in Config/crypto.json before using in production.
 Use `openssl rand -base64 32` to generate a random string.
 Database prepared
 Starting server on 0.0.0.0:8080
+GET /
 ```
 
-To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
+To test your project on your Mac open the browser and enter the url: [http://localhost:8080/](http://localhost:8080/)
 ![image](https://cloud.githubusercontent.com/assets/1082222/26356473/6c3c44b4-3fcc-11e7-9b62-d9b316f29d77.png)
 
 If you run the following command you should see:
@@ -236,9 +225,9 @@ local               mysql.data
 
 ### `vapor-postgresql` image
 
-* Swift version: 3.1.1
+* Swift version: 4.0.2
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `./build --name=vapor-postgresql`
+* Instruction to build: `./build --image=vapor-postgresql`
 * Project generate with: `vapor new ItWorks-PostgreSQL --template=api`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -288,7 +277,7 @@ Database prepared
 Starting server on 0.0.0.0:8080
 ```
 
-To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
+To test your project on your Mac open the browser and enter the url: [http://localhost:8080/](http://localhost:8080/)`
 ![image](https://cloud.githubusercontent.com/assets/1082222/26357361/564f4ebe-3fcf-11e7-9770-e220a6a8b12d.png)
 
 If you run the following command you should see:
@@ -303,9 +292,9 @@ local               progresql.data
 
 ### `vapor-sqlite` image
 
-* Swift version: 3.1.1
+* Swift version: 4.0.2
 * Image base on: `ubuntu:16.10 ► vapor`
-* Instruction to build: `./build --name=vapor-sqlite`
+* Instruction to build: `./build --image=vapor-sqlite`
 * Project generate with: `vapor new ItWorks-Sqlite --template=api`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
@@ -339,7 +328,7 @@ root@c05cd630ea61:/vapor/ItWorks-Sqlite#
 To run your project on the container:
 
 ```
-root@2c0466bed6ff:/vapor/ItWorks-Sqlite# vapor run serve
+root@3c9afdb27d56:/vapor/ItWorks-Sqlite# vapor run serve
 Running ItWorks-Sqlite ...
 The current hash key "0000000000000000" is not secure.
 Update hash.key in Config/crypto.json before using in production.
@@ -351,7 +340,7 @@ Database prepared
 Starting server on 0.0.0.0:8080
 ```
 
-To test your project on your Mac open the browser and enter the url: `http://localhost:8080/`
+To test your project on your Mac open the browser and enter the url: [http://localhost:8080/](http://localhost:8080/)
 ![image](https://cloud.githubusercontent.com/assets/1082222/26355597/9313c056-3fc9-11e7-9842-b8c1167bdd25.png)
 
 ## To build all images
@@ -389,19 +378,7 @@ $ docker run -ti --rm \
                  --name swift4 \
                  -v $(pwd)/swift4/projects:/projects \
                  --privileged=true \
-                 tofdocker/swift4:0.1
-```
-
-### Run `swift3` image from the cloud
-
-```
-$ pwd
-/Volumes/Sources/
-$ docker run -ti --rm \
-                 --name swift31 \
-                 -v $(pwd)/swift31/projects:/projects \
-                 --privileged=true \
-                 tofdocker/swift31:1.3
+                 tofdocker/swift4:1.0
 ```
 
 ### Run `vapor` image from the cloud
@@ -414,7 +391,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor:1.8
+                 tofdocker/vapor:1.9
 ```
 
 ### Run `vapor-mysql` image from the cloud
@@ -429,7 +406,7 @@ $ docker run -ti --rm \
                  -v mysql.data:/var/lib/mysql \
                  -v $(pwd)/vapor-mysql/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor-mysql:1.8
+                 tofdocker/vapor-mysql:1.9
 ```
 
 ### Run `vapor-postgresql ` image from the cloud
@@ -444,7 +421,7 @@ $ docker run -ti --rm \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
 	         --privileged=true \
-                 tofdocker/vapor-postgresql:1.8
+                 tofdocker/vapor-postgresql:1.9
 ```
 
 ### Run `vapor-sqlite ` image from the cloud
@@ -457,7 +434,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:8080:8080 \
                  -v $(pwd)/vapor-sqlite/projects:/vapor \
                  --privileged=true \
-                 tofdocker/vapor-sqlite:1.8
+                 tofdocker/vapor-sqlite:1.9
 ```
 
 ## Resources

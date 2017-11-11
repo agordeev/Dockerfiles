@@ -7,4 +7,6 @@ echo "" >> $PG_HBA
 echo "# vapor-postgresql update" >> $PG_HBA 
 echo "host    all             all             0.0.0.0/0               trust" >> $PG_HBA
 service postgresql start
+sudo -u postgres createuser vapor
+sudo -u postgres createdb vapor
 sudo -u postgres psql < /tmp/setup.sql

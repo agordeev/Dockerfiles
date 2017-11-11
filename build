@@ -18,7 +18,6 @@ function usage()
       - all
       - clang
       - swift4
-      - swift31
       - vapor
       - vapor-mysql
       - vapor-postgresql
@@ -33,9 +32,9 @@ function checkImage() {
    
   if [ "$IMAGE" == "all" ]
   then
-    FROMS=( "" "" "" "" ":1.8" ":1.8" ":1.8" )
-    TAGS=( ":1.6" ":1.3" ":0.1" ":1.8" ":1.8" ":1.8" ":1.8" )
-    NAMES=( "clang" "swift31" "swift4" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
+    FROMS=( "" "" "" ":1.9" ":1.9" ":1.9" )
+    TAGS=( ":1.6" ":1.0" ":1.9" ":1.9" ":1.9" ":1.9" )
+    NAMES=( "clang" "swift4" "vapor" "vapor-mysql" "vapor-postgresql" "vapor-sqlite" )
   else
     NAMES+=( "$IMAGE" )
   fi
@@ -94,6 +93,16 @@ for ((I=0;I<${#NAMES[@]};I++))
 do
  cp install "${NAMES[$I]}/"
  printf "\033[38;5;12mBuild '${NAMES[$I]}' image\033[0m\n" 
+ if [ "${NAMES[$I]}" == "vapor-mysql" ]
+ then
+  printf "\033[38;5;12mRemove volume: mysql.data\033[0m\n"
+  docker volume rm mysql.data >& /dev/null
+ fi
+ if [ "${NAMES[$I]}" == "vapor-postgresql" ]
+ then
+  printf "\033[38;5;12mRemove volume: postgresql.data\033[0m\n"
+  docker volume rm postgresql.data >& /dev/null
+ fi
  docker build ${CLEAN} -t ${NAMES[$I]} ${NAMES[$I]}/
  if [ "$DOCKERPUSH" -eq 1 ] 
  then
