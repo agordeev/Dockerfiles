@@ -1,20 +1,27 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "ItWorks",
-    targets: [
-        Target(name: "App"),
-        Target(name: "Run", dependencies: ["App"]),
+    products: [
+        .library(name: "App", targets: ["App"]),
+        .executable(name: "Run", targets: ["Run"])
     ],
     dependencies: [
-        .Package(url: "https://github.com/vapor/vapor.git", "2.3.0"),
-        .Package(url: "https://github.com/vapor/leaf-provider.git", "1.1.0"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "2.3.0"),
+        .package(url: "https://github.com/vapor/leaf-provider.git", from: "1.1.0"),
     ],
-    exclude: [
-        "Config",
-        "Database",
-        "Public",
-        "Resources",
+    targets: [
+        .target(name: "App", dependencies: ["Vapor", "LeafProvider"],
+               exclude: [
+                   "Config",
+                   "Database",
+                   "Public",
+                   "Resources"
+               ]),
+        .target(name: "Run", dependencies: ["App"]),
+        .testTarget(name: "AppTests", dependencies: ["App", "Testing"])
     ]
 )
 

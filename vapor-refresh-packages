@@ -77,16 +77,22 @@ then
   for ((I=0;I<${#NAMES[@]};I++))
   do
    #clear
-   printf "\033[38;5;12mRefresh packages for '${NAMES[$I]}' \033[0m\n"
+   printf "\n\033[38;5;12mRefresh packages for '${NAMES[$I]}' \033[0m\n\n"
    
    if [ $CLEAN == true ]
    then
-     CMD="cd ${PROJECTS[$I]} && echo Project: \$PWD && rm -rf Package.pins .build && vapor build"
-   else
-     CMD="cd ${PROJECTS[$I]} && echo Project: \$PWD && vapor update && vapor build"
-   fi
-   
+     printf "\033[38;5;33mForce clean and prefetch project\033[0m\n"
+     CMD="cd ${PROJECTS[$I]} && echo Current folder: \$PWD ; rm -rf .build/ ; rm Packages.resolved ; swift package update"
+     docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
+     printf "\n"
+   fi 
+
+   printf "\033[38;5;33mUpdate project\033[0m\n"
+   CMD="cd ${PROJECTS[$I]} && echo Current folder: \$PWD ; vapor update"
    docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
-   docker rm -f $(docker ps -a -q) &> /dev/null
+     
+   printf "\n\033[38;5;33mBuild project\033[0m\n"
+   CMD="cd ${PROJECTS[$I]} && echo Current folder: \$PWD ; vapor build"
+   docker run -ti --rm --name ${NAMES[$I]} -v $DIR/${NAMES[$I]}/projects/:/vapor ${NAMES[$I]} /bin/bash -c "$CMD"
   done
 fi

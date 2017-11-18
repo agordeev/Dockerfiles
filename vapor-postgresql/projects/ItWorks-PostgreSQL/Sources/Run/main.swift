@@ -1,8 +1,5 @@
 import App
 
-// Tof: Import only to access to a Database class
-import FluentProvider
-
 /// We have isolated all of our App's logic into
 /// the App module because it makes our app
 /// more testable.
@@ -24,8 +21,5 @@ try config.setup()
 
 let drop = try Droplet(config)
 try drop.setup()
-
-// Tof: Hack to memorised the current database
-Database.default = drop.database
 
 try drop.run()

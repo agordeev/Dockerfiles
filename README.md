@@ -107,7 +107,7 @@ If you have your vapor sources projects are on`/Volumes/Sources/vapor/projects` 
 * Swift version: 4.0.2
 * Image base on: `ubuntu:16.10`
 * Instruction to build: `./build --image=vapor`
-* Project generate with: `vapor new ItWorks --template=web`
+* Project generate with: `vapor new ItWorks --web`
 * Description: Download and compiled vapor on Linux. Can be used by a developer to develop web site or/and REST Api.
 
 
@@ -127,7 +127,7 @@ On the container to build your project (replace `ItWorks` by your project):
 
 ```
 root@0f8de5949871:/vapor# cd ItWorks/
-root@0f8de5949871:/vapor/ItWorks# # If you update `package.swift` you must execute
+root@0f8de5949871:/vapor/ItWorks# # If you update `Package.swift` you must execute
 root@0f8de5949871:/vapor/ItWorks# vapor build --clean
 root@0f8de5949871:/vapor/ItWorks# # Otherwise just execute
 root@0f8de5949871:/vapor/ItWorks# vapor build 
@@ -160,7 +160,7 @@ To test your project on your Mac open the browser and enter the url: [http://loc
 * Swift version: 4.0.2
 * Image base on: `ubuntu:16.10 ► vapor`
 * Instruction to build: `./build --image=vapor-mysql`
-* Project generate with: `vapor new ItWorks-MySQL --template=api`
+* Project generate with: `vapor new ItWorks-MySQL --api`
 * Description: Install mysql on the container, pre-create `vapor` database and `vapor` user (without password)
 
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-mysql/projects` to `/vapor` on the container: 
@@ -184,7 +184,7 @@ On the container to build your project (replace `ItWorks-MySQL` by your project)
 
 ```
 root@3922aa89091f:/vapor# cd ItWorks-MySQL/
-root@3922aa89091f:/vapor/ItWorks-MySQL# # If you update `package.swift` you must execute
+root@3922aa89091f:/vapor/ItWorks-MySQL# # If you update `Package.swift` you must execute
 root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build --clean
 root@3922aa89091f:/vapor/ItWorks-MySQL# # Otherwise just execute
 root@3922aa89091f:/vapor/ItWorks-MySQL# vapor build
@@ -228,7 +228,7 @@ local               mysql.data
 * Swift version: 4.0.2
 * Image base on: `ubuntu:16.10 ► vapor`
 * Instruction to build: `./build --image=vapor-postgresql`
-* Project generate with: `vapor new ItWorks-PostgreSQL --template=api`
+* Project generate with: `vapor new ItWorks-PostgreSQL --api`
 * Description: Install PostgreSQL on the container, pre-create `vapor` database and `vapor` user (without password)
 
 On your Mac open `Terminal` and enter the following command. You will launch the container and map `/Volumes/Sources/vapor-mysql/projects` to `/vapor` on the container: 
@@ -252,7 +252,7 @@ On the container to build your project (replace `ItWorks-PostgreSQL` by your pro
 
 ```
 root@99222e9cb4ac:/vapor# cd ItWorks-PostgreSQL/
-root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# # If you update `package.swift` you must execute
+root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# # If you update `Package.swift` you must execute
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build --clean
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# # Otherwise just execute
 root@99222e9cb4ac:/vapor/ItWorks-PostgreSQL# vapor build
@@ -315,7 +315,7 @@ On the container to build your project (replace `ItWorks-Sqlite ` by your projec
 
 ```
 root@c05cd630ea61:/vapor# cd ItWorks-Sqlite/
-root@c05cd630ea61:/vapor/ItWorks-Sqlite# # If you update `package.swift` you must execute
+root@c05cd630ea61:/vapor/ItWorks-Sqlite# # If you update `Package.swift` you must execute
 root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor build --clean
 root@c05cd630ea61:/vapor/ItWorks-Sqlite# # Otherwise just execute
 root@c05cd630ea61:/vapor/ItWorks-Sqlite# vapor build
@@ -420,7 +420,7 @@ $ docker run -ti --rm \
                  -p 127.0.0.1:5432:5432 \
                  -v postgresql.data:/var/lib/postgresql/9.5/main \
                  -v $(pwd)/vapor-postgresql/projects:/vapor \
-	         --privileged=true \
+                 --privileged=true \
                  tofdocker/vapor-postgresql:1.9
 ```
 
