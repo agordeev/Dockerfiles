@@ -80,7 +80,7 @@ All images are built in the `Dockerfiles` folder
 
 * Image base on: `ubuntu:16.10`
 * Instruction to build: `./build --image=swift4`
-* Description: Install the Swift 4.0 environment on Linux. Actually configure with development branch of Swift 4. Don't use in production!!!
+* Description: Install the Swift 4.0 environment on Linux.
 
 ```
 $ docker run -ti --rm \
