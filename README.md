@@ -369,7 +369,7 @@ $ docker run -ti --rm \
                  -v $(pwd)/clang/projects:/projects \
                  tofdocker/clang:1.6
 ```
-### Run `swift4` image from the cloud (Beta version)
+### Run `swift4` image from the cloud
 
 ```
 $ pwd
