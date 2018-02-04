@@ -77,10 +77,10 @@ else
           DOCKERPUSH=1
           shift
           ;;
-				*)
+	*)
           usage
-				;;
-		esac
+	  ;;
+	esac
   done
 fi
 
