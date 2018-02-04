@@ -52,11 +52,11 @@ else
 
   for PARAM in "$@"
   do
-		case $PARAM in
-				--image=*)
+	case $PARAM in
+	--image=*)
           checkImage "${PARAM#*=}"
           shift
-					;;
+	  ;;
         --from=*)
           FROMS+=( "${PARAM#*=}" )
           shift
